@@ -5,13 +5,12 @@ from exams_api.models import Exam
 
 class ExamBaseSerializer(serializers.ModelSerializer):
     """Base exam serializer"""
-    # exam_sheet = serializers.SerializerMethodField()
 
     class Meta:
         model = Exam
-        fields = ('id', 'user', 'exam_sheet', 'score')
+        fields = ('id', 'user', 'exam_sheet', 'score', 'progress',)
 
-        read_only_fields = ('id', 'created', 'score')
+        read_only_fields = ('id', 'created', 'score', 'progress',)
 
 
     def get_exam_sheet(self, obj):
