@@ -3,9 +3,9 @@ from django.db import models
 
 class TimeStampedModel(models.Model):
 
-    created = models.DateField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)
 
-    edited = models.DateField(auto_now=True)
+    edited = models.DateTimeField(auto_now=True)
 
     class Meta:
         abstract = True
