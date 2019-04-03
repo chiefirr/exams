@@ -8,6 +8,9 @@ User = get_user_model()
 
 
 class Task(TimeStampedModel):
+    class Meta:
+        unique_together = ('user', 'task_sheet', )
+
     user = models.ForeignKey(User,
                              on_delete=models.CASCADE,
                              related_name='tasks',

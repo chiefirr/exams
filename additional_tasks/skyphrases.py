@@ -3,7 +3,7 @@ import os
 from additional_tasks.helpers import parse_file_content
 from exams.settings import BASE_DIR
 
-FILENAME = 'skychallenge_skyphrase_input.txt'
+FILENAME = 'skyphrase_input.txt'
 FILEPATH = os.path.join(BASE_DIR, 'additional_tasks', 'files', FILENAME)
 
 

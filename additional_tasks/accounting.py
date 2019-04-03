@@ -4,13 +4,12 @@ import funcy
 from additional_tasks.helpers import parse_file_content_json
 from exams.settings import BASE_DIR
 
-FILENAME = 'skychallenge_accounting_input.txt'
+FILENAME = 'accounting_input.txt'
 FILEPATH = os.path.join(BASE_DIR, 'additional_tasks', 'files', FILENAME)
 
 
 def accounting():
     ctr = 0
-
     def count(content):
         nonlocal ctr
         for item in funcy.flatten(content):
