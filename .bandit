@@ -1,0 +1,2 @@
+[bandit]
+exclude: venv,.tox,/exams_api/tests/

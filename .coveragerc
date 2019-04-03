@@ -1,0 +1,14 @@
+[run]
+branch = true
+source = exams_api, exams, core
+omit =
+    *venv/*
+    */tests/*
+    */testing/*
+    *__init__.py*
+    */migrations/*
+    */e2e/*
+    *apps.py*
+    *manage.py*
+    *wsgi.py*
+    *urls.py*
