@@ -1,4 +1,5 @@
 import os
+
 import funcy
 
 from additional_tasks.helpers import parse_file_content_json
@@ -10,14 +11,16 @@ FILEPATH = os.path.join(BASE_DIR, 'additional_tasks', 'files', FILENAME)
 
 def accounting():
     ctr = 0
+
     def count(content):
         nonlocal ctr
         for item in funcy.flatten(content):
-            if type(item) == int:
+            if isinstance(item, int):
                 ctr += item
-            elif type(item) == dict:
+            elif isinstance(item, dict):
                 count(item.values())
         return ctr
+
     return count
 
 
@@ -26,4 +29,3 @@ if __name__ == '__main__':
     counter = accounting()
     result = counter(content.values())
     print("Result is: ", result)
-

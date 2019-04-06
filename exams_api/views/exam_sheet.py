@@ -8,7 +8,7 @@ from exams_api.views.filters import ExamSheetsFilter
 
 
 class ExamSheetViewSet(MultiSerializerViewSet):
-    queryset = ExamSheet.objects.all()
+    queryset = ExamSheet.objects.select_related('creator').all()
 
     serializers = {'default': ExamSheetBaseSerializer,
                    }
@@ -17,3 +17,7 @@ class ExamSheetViewSet(MultiSerializerViewSet):
     filterset_class = ExamSheetsFilter
 
     ordering_fields = ('max_score',)
+
+    def perform_create(self, serializer):
+        serializer.save(creator=self.request.user)
+
