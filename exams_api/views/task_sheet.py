@@ -4,7 +4,7 @@ from exams_api.serializers import TaskSheetBaseSerializer
 
 
 class TaskSheetViewSet(MultiSerializerViewSet):
-    queryset = TaskSheet.objects.all()
+    queryset = TaskSheet.objects.select_related('creator').all()
 
     serializers = {'default': TaskSheetBaseSerializer,
                    }

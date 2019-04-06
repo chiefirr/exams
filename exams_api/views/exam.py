@@ -8,6 +8,8 @@ from exams_api.views.filters import ExamFilter
 
 
 class ExamViewSet(MultiSerializerViewSet):
+    http_method_names = ['get', 'post']
+
     queryset = Exam.objects.all()
 
     serializers = {'default': ExamBaseSerializer,
