@@ -73,5 +73,3 @@ class Exam(TimeStampedModel):
                 return 'Good'
             elif mark_range.good < mark_rel <= mark_range.very_good:
                 return 'Very good'
-
-        return 111

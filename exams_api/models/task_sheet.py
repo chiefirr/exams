@@ -29,7 +29,7 @@ class TaskSheet(TimeStampedModel):
 
     score = models.PositiveSmallIntegerField(validators=[MinValueValidator(0)],
                                              default=0,
-                                             )  # TODO - validate 0<score
+                                             )
 
     answer = models.TextField()
 

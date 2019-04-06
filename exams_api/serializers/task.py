@@ -6,7 +6,7 @@ from exams_api.models import Task, Exam, ExamSheet
 class TaskBaseSerializer(serializers.ModelSerializer):
     """Base task serializer"""
     default_error_messages = {
-        "cant_start_task": "You are did not created an Exam which contains this Task Sheet. You can't answer this Task Sheet now.",
+        "cant_start_task": "You did not create an Exam which contains this Task Sheet. You can't answer this Task Sheet now.",
     }
 
     right_answer = serializers.CharField(source='task_sheet.answer', read_only=True)
