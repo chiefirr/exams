@@ -9,7 +9,7 @@ class ExamBaseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Exam
         fields = ('id', 'user', 'exam_sheet', 'score', 'progress',)
-        read_only_fields = ('id', 'created', 'score', 'progress', 'user',)
+        read_only_fields = ('id', 'created', 'score', 'progress', 'user')
 
 
     def get_exam_sheet(self, obj):

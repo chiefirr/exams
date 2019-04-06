@@ -8,7 +8,7 @@ class TaskSheetBaseSerializer(serializers.ModelSerializer):
     """Base task sheet serializer"""
     default_error_messages = {
         "bad_creator": "You are not creator of this Exam Sheet. You can't add Task Sheets here. Create your own Exam Sheet.",
-        "too_big_score": "This score exceeds maximal allowed Exam Sheet score. Free score points left: {amount}"
+        "too_big_score": "This score exceeds maximal allowed Exam Sheet score. Free score points left: {amount}",
     }
 
     class Meta:
@@ -24,8 +24,9 @@ class TaskSheetBaseSerializer(serializers.ModelSerializer):
 
         taken_score = exam_sheet[0].taken_score
         max_score = exam_sheet[0].max_score
-        if score + taken_score > max_score:
+        if taken_score and score + taken_score > max_score:
             self.fail("too_big_score", amount=(max_score - taken_score))
+        return score
 
     def save(self, **kwargs):
         user = self.context['request'].user

@@ -1,4 +1,6 @@
+from django.db import IntegrityError
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.exceptions import ValidationError
 from rest_framework.filters import OrderingFilter
 
 from core.views import MultiSerializerViewSet
@@ -21,4 +23,7 @@ class ExamViewSet(MultiSerializerViewSet):
     ordering_fields = ('created',)
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        try:
+            serializer.save(user=self.request.user)
+        except IntegrityError:
+            raise ValidationError({'error': "You have already passed this exam!"})

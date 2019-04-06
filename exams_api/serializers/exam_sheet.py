@@ -14,8 +14,6 @@ class ExamSheetBaseSerializer(serializers.ModelSerializer):
         fields = ('id', 'title', 'creator', 'max_score', 'task_sheets',)
         read_only_fields = ('id', 'created', 'creator',)
 
-        # TODO - field creator writable only on POST and read_only on PUT
-
     def get_task_sheets(self, obj):
         from . import TaskSheetBaseSerializer
         return TaskSheetBaseSerializer(obj.task_sheets, many=True, read_only=True).data

@@ -1,6 +1,8 @@
+from django.db import IntegrityError
 from django_filters.rest_framework import DjangoFilterBackend
 from guardian.shortcuts import assign_perm
 from rest_framework import status
+from rest_framework.exceptions import ValidationError
 from rest_framework.filters import OrderingFilter
 from rest_framework.response import Response
 
@@ -30,6 +32,15 @@ class TaskSheetViewSet(MultiSerializerViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     def perform_create(self, serializer):
-        assign_perm('exams_api.change_examsheet', self.request.user)
-        assign_perm('exams_api.delete_examsheet', self.request.user)
-        serializer.save(creator=self.request.user)
+        try:
+            serializer.save(creator=self.request.user)
+        except IntegrityError:
+            raise ValidationError({'error': "This question already exists in this Exam Sheet."})
+
+    def retrieve(self, request, *args, **kwargs):
+        # TODO - delete this method
+        instance = self.get_object()
+        aaa = self.request.user.has_perm('exams_api.change_tasksheet', instance)
+        print("aaa = ", aaa)
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
