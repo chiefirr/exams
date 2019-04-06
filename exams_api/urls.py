@@ -10,6 +10,7 @@ router.register(r'exams', views.ExamViewSet)
 router.register(r'exams_sheets', views.ExamSheetViewSet)
 router.register(r'tasks', views.TaskViewSet)
 router.register(r'tasks_sheets', views.TaskSheetViewSet)
+router.register(r'marks_range', views.MarksRangeViewSet)
 
 urlpatterns = []
 urlpatterns += router.urls

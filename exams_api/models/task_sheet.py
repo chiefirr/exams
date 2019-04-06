@@ -42,4 +42,4 @@ class TaskSheet(TimeStampedModel):
     # content_object = GenericForeignKey()
 
     def __str__(self):
-        return f"Task {self.pk}: to Exam Sheet '{self.exam_sheet}'"
+        return f"Task {self.pk}: to Exam Sheet '{self.exam_sheet}' - Question: '{self.question}'"

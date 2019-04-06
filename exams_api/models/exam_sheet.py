@@ -22,6 +22,11 @@ class ExamSheet(TimeStampedModel):
 
     max_score = models.PositiveSmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)])
 
+    marks_range = models.ForeignKey('exams_api.MarksRange',
+                                    on_delete=models.PROTECT,
+                                    related_name='examsheets',
+                                    null=True,
+                                    )
 
     def __str__(self):
         return f'ExamSheet: {self.title}'
