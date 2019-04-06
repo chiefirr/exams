@@ -14,3 +14,4 @@ class ExtendedUser(AbstractUser):
         assign_perm('exams_api.add_exam', self)
         assign_perm('exams_api.add_tasksheet', self)
         assign_perm('exams_api.add_task', self)
+        assign_perm('exams_api.add_marksrange', self)
