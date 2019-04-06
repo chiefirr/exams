@@ -34,8 +34,11 @@ class Exam(TimeStampedModel):
         all_tasks_results = Task.objects.select_related('task_sheet')\
                                         .filter(user=self.user, task_sheet__exam_sheet=self.exam_sheet)\
                                         .aggregate(Sum('score'))
-        # return round(all_tasks_results["score__sum"]/self.exam_sheet.max_score*100, 2)
-        return all_tasks_results["score__sum"]
+        if all_tasks_results["score__sum"]:
+            return round(all_tasks_results["score__sum"] / self.exam_sheet.max_score * 100, 2)
+            # return all_tasks_results["score__sum"]
+        else:
+            return 0
 
 
     @property

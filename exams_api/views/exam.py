@@ -19,3 +19,6 @@ class ExamViewSet(MultiSerializerViewSet):
     filterset_class = ExamFilter
 
     ordering_fields = ('created',)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)

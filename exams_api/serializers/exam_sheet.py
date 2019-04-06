@@ -12,7 +12,6 @@ class ExamSheetBaseSerializer(serializers.ModelSerializer):
     class Meta:
         model = ExamSheet
         fields = ('id', 'title', 'creator', 'max_score', 'task_sheets',)
-
         read_only_fields = ('id', 'created', 'creator',)
 
         # TODO - field creator writable only on POST and read_only on PUT

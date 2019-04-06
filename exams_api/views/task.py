@@ -19,3 +19,6 @@ class TaskViewSet(MultiSerializerViewSet):
 
     filterset_class = TaskFilter
     ordering_fields = ('score', 'created')
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
