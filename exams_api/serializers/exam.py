@@ -8,7 +8,8 @@ class ExamBaseSerializer(serializers.ModelSerializer):
     """Base exam serializer"""
     default_error_messages = {
         "empty_exam": "Ooops! This exam has no tasks! Try another one!",
-        "lack_of_score": "Sorry, you can't start this exam - its max score is not reached yet. Ask the author: '{author}' to add more questions. Missing: {missing} points.",
+        "lack_of_score": "Sorry, you can't start this exam - its max score is not reached yet."
+                         " Ask the author: '{author}' to add more questions. Missing: {missing} points.",
     }
 
     score = serializers.SerializerMethodField()

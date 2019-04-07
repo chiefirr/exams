@@ -82,7 +82,7 @@ class MarksRangeSerializerTests(TestCase):
 
     def test_contains_expected_fields_marksrange_serializer(self):
         serializer = TaskBaseSerializer(data=self.task_1)
-        self.assertCountEqual(serializer.fields, {'id', 'user', 'task_sheet', 'answer', 'right_answer'})
+        self.assertCountEqual(serializer.fields, {'id', 'user', 'task_sheet', 'answer', 'right_answer', 'score'})
 
     def test_save_serializer(self):
         serializer = TaskBaseSerializer(data=self.task_attrs_2, context=self.context_2)

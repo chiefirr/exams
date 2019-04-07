@@ -7,7 +7,8 @@ from exams_api.models import TaskSheet, ExamSheet
 class TaskSheetBaseSerializer(serializers.ModelSerializer):
     """Base task sheet serializer"""
     default_error_messages = {
-        "bad_creator": "You are not creator of this Exam Sheet. You can't add Task Sheets here. Create your own Exam Sheet.",
+        "bad_creator": "You are not creator of this Exam Sheet. You can't add Task Sheets here."
+                       " Create your own Exam Sheet.",
         "too_big_score": "This score exceeds maximal allowed Exam Sheet score. Free score points left: {amount}",
     }
 

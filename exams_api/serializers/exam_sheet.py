@@ -2,7 +2,6 @@ from rest_framework import serializers
 
 from core.serializers import ShortUserSerializer
 from exams_api.models import ExamSheet
-from exams_api.serializers.marks_range import MarksRangekBaseSerializer
 
 
 class ExamSheetBaseSerializer(serializers.ModelSerializer):
