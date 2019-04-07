@@ -22,11 +22,18 @@ Before you run the project you need to create a **.env** file.
 * DB_PASSWORD - databas password
 
 ### Installing
-
-To use production version run:
+##### With Makefile
+You can create virtual environment _(you need virtualenv installed)_, install dependencies, migrate,
+ apply fixtures and runserver with 1 command:
 ```
-pip install -r requirements.txt
+make install
 ```
+######Fixtures:
+If you apply fixtures - you will have 3 users created:
+- **admin_exams** pass: **test12345** - is a superuser
+- **first_creator** pass: **test12345** email: fi@fi.fi
+- **second_creator** pass: **test12345** email: se@se.se
+##### Manually
 To use minimal basic requirements version run:
 ```
 pip install -r requirements/base.txt
@@ -34,7 +41,7 @@ pip install -r requirements/base.txt
 
 To use full development version run:
 ```
-pip install -r requirements/dev.txt
+pip install -r requirements.txt
 ```
 
 ### Available API
@@ -56,12 +63,15 @@ rest-auth/logout/
 ```.env
 /core/users/
 ```
-## Running the tests
+### Running the tests
 You can run tests using [pytest](https://docs.pytest.org/en/latest/): 
 ```
 pytest
 ```
-
+or
+```
+make test
+```
 ### And coding style tests
 
 Test style adjustments accordingly to PEP8:

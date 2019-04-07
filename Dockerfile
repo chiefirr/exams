@@ -1,5 +1,5 @@
 # Pull base image
-FROM python:3.7-slim
+FROM python:3.6.5-slim
 
 # Set environment varibles
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -10,19 +10,19 @@ ENV PYTHONUNBUFFERED 1
 #ENV DB_USER examo
 #ENV DB_PASSWORD 123qwe!!!
 # Set work directory
-RUN mkdir /exams
-WORKDIR /exams
+RUN mkdir /code
+WORKDIR /code
 
 # Install dependencies
 # RUN pip install virtualenv
 # COPY Pipfile Pipfile.lock /code/
 
 # Copy project
-COPY . /exams/
+ADD . /code/
 RUN pip install -r requirements/base.txt
 
 # Server
-EXPOSE 8000
-STOPSIGNAL SIGINT
-ENTRYPOINT ["python", "manage.py"]
-CMD ["runserver", "0.0.0.0:8000"]
+#EXPOSE 8000
+#STOPSIGNAL SIGINT
+#ENTRYPOINT ["python", "manage.py"]
+#CMD ["runserver", "0.0.0.0:8000"]

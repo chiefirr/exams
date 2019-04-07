@@ -165,7 +165,7 @@ REST_FRAMEWORK = {
     'DATETIME_FORMAT': "%H:%M:%S %d-%m-%Y",
 }
 
-if DEBUG == True:
+if DEBUG == False:
     DATABASES["default"] = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.environ.get("DB_NAME"),

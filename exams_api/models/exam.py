@@ -39,24 +39,35 @@ class Exam(TimeStampedModel):
 
     @property
     def progress(self):
-        finished_tasks = Task.objects.select_related('task_sheet') \
-            .filter(user=self.user, task_sheet__exam_sheet=self.exam_sheet).count()
-
-        all_exam_tasks = TaskSheet.objects.filter(exam_sheet=self.exam_sheet).count()
+        all_exam_tasks, finished_tasks = self._finished_and_all_tasks()
         return f'{finished_tasks}/{all_exam_tasks}'
 
     @property
     def final_grade(self):
-        if not self.exam_sheet.marks_range:
-            return "Marks range is not defined for this Exam Sheet."
-        finished_tasks = Task.objects.select_related('task_sheet') \
-            .filter(user=self.user, task_sheet__exam_sheet=self.exam_sheet).count()
+        MESSAGES = {
+            "not_defined": "Marks range is not defined for this Exam Sheet.",
+            "not_completed_tasks": "Complete all tasks at this Exam Sheet to see your final grade.",
+        }
 
-        all_exam_tasks = TaskSheet.objects.filter(exam_sheet=self.exam_sheet).count()
+        if not self.exam_sheet.marks_range:
+            return MESSAGES["not_defined"]
+
+        all_exam_tasks, finished_tasks = self._finished_and_all_tasks()
 
         if finished_tasks != all_exam_tasks:
-            return "Complete all tasks at this Exam Sheet to see your final grade."
+            return MESSAGES["not_completed_tasks"]
         else:
             mark_range = self.exam_sheet.marks_range
             mark_rel = finished_tasks / all_exam_tasks
             return check_final_grade(mark_range, mark_rel)
+
+    def _finished_and_all_tasks(self):
+        """
+        Method returns amount of finished tasks for selected Exam sheet for selected user
+        and amount of all available tasks for that Exam sheet
+        :return:
+        """
+        finished_tasks = Task.objects.select_related('task_sheet') \
+            .filter(user=self.user, task_sheet__exam_sheet=self.exam_sheet).count()
+        all_exam_tasks = TaskSheet.objects.filter(exam_sheet=self.exam_sheet).count()
+        return all_exam_tasks, finished_tasks
