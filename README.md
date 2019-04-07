@@ -45,13 +45,13 @@ pip install -r requirements.txt
 ```
 
 ### Available API
-#####User registration:
+**User registration:**
 ```
 rest-auth/registration/
 rest-auth/login/
 rest-auth/logout/
 ```
-#####Exams:
+**Exams:**
 ```
 /api/exams/
 /api/exams_sheets/
@@ -59,7 +59,7 @@ rest-auth/logout/
 /api/api/tasks//
 /api/marks_range/
 ```
-#####Users:
+**Users:**
 ```.env
 /core/users/
 ```
@@ -89,7 +89,7 @@ bandit -r .
 ```
 
 ### HOWTO:
-######Description
+**Description**
 API module for creating Exams service.
 Provides possibilities:
 - create Exam Sheets (collection of Task Sheets), edit and delete for its creator and view for another users
@@ -100,7 +100,7 @@ Provides possibilities:
 Also optionally Exam Sheet creator can assign Marks Range - and this allows to show final grade for the user depending
 on his answers.
 
-######A typical workflow looks like this:
+**A typical workflow looks like this:**
 1. Register a new user and login <br />
 2. Create exam template:<br />
 2-0 (OPTIONALLY) Create a new **Marks Range** <br />
