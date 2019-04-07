@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'rest_auth.registration',
+    'dry_rest_permissions',
     'django_filters',
     'guardian',
     'core',

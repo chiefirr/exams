@@ -1,5 +1,6 @@
 from django.db import IntegrityError
 from django_filters.rest_framework import DjangoFilterBackend
+from dry_rest_permissions.generics import DRYPermissions
 from guardian.shortcuts import assign_perm
 from rest_framework import status
 from rest_framework.filters import OrderingFilter
@@ -16,6 +17,7 @@ class TaskSheetViewSet(MultiSerializerViewSet):
     """
     Viewset for Task Sheet, which is a question to be solved.
     """
+    permission_classes = (DRYPermissions,)
     queryset = TaskSheet.objects.select_related('creator').all()
 
     serializers = {'default': TaskSheetBaseSerializer,

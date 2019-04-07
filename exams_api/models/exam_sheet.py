@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+from dry_rest_permissions.generics import authenticated_users, allow_staff_or_superuser
 
 from core.models.abstract_models import TimeStampedModel
 
@@ -30,3 +31,26 @@ class ExamSheet(TimeStampedModel):
 
     def __str__(self):
         return f'ExamSheet: {self.title}'
+
+    @staticmethod
+    @allow_staff_or_superuser
+    @authenticated_users
+    def has_read_permission(request):
+        return True
+
+    @allow_staff_or_superuser
+    @authenticated_users
+    def has_object_read_permission(self, request):
+        return True
+
+    @staticmethod
+    @allow_staff_or_superuser
+    @authenticated_users
+    def has_write_permission(request):
+        return True
+
+    def has_object_write_permission(self, request):
+        return request.user == self.creator
+
+    def has_object_update_permission(self, request):
+        return request.user == self.creator
