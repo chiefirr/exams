@@ -19,7 +19,7 @@ class ExamSheetBaseSerializer(serializers.ModelSerializer):
         read_only_fields = ('id', 'created', 'creator',)
 
     def validate_marks_range(self, marks_range):
-        if marks_range.very_good > int(self.initial_data['max_score']):
+        if marks_range and marks_range.very_good > int(self.initial_data['max_score']):
             self.fail("cant_assign_range")
 
     def get_task_sheets(self, obj):

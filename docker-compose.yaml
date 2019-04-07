@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  db:
+    restart: always
+    image: postgres
+    environment:
+      - POSTGRES_USER=exams
+      - POSTGRES_PASSWORD=examo
+      - POSTGRES_DB=123qwe!!!
+  web:
+    restart: always
+    #    env_file: .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    #    command: python3 manage.py runserver 0.0.0.0:8990
+    volumes:
+      - .:/exams
+    ports:
+      - "8099:8099"
+    depends_on:
+      - db

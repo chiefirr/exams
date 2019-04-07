@@ -49,7 +49,9 @@ class ExamSheetSerializerTests(TestCase):
 
     def test_marksrange_validation(self):
         serializer = ExamSheetBaseSerializer(data=self.examsheet_2)
+        serializer2_norange = ExamSheetBaseSerializer(data=self.examsheet_1)
         self.assertFalse(serializer.is_valid())
+        self.assertFalse(serializer2_norange.is_valid())
 
     def test_range_validation_2(self):
         serializer = ExamSheetBaseSerializer(data=self.attrs_2)

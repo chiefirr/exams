@@ -92,13 +92,13 @@ class ExamSerializerTests(TestCase):
         self.assertEqual(self.exam_2.progress, "2/3")
 
     def test_check_final_grade(self):
-        exam = Exam(**self.exam_attrs_2)
-        self.assertEqual(exam._check_final_grade(self.range, 5), 'Non-Certification')
-        self.assertEqual(exam._check_final_grade(self.range, 15), 'Very bad')
-        self.assertEqual(exam._check_final_grade(self.range, 35), 'Bad')
-        self.assertEqual(exam._check_final_grade(self.range, 55), 'Moderate')
-        self.assertEqual(exam._check_final_grade(self.range, 75), 'Good')
-        self.assertEqual(exam._check_final_grade(self.range, 95), 'Very good')
+        from exams_api.helpers.models_helpers import check_final_grade
+        self.assertEqual(check_final_grade(self.range, 5), 'Non-Certification')
+        self.assertEqual(check_final_grade(self.range, 15), 'Very bad')
+        self.assertEqual(check_final_grade(self.range, 35), 'Bad')
+        self.assertEqual(check_final_grade(self.range, 55), 'Moderate')
+        self.assertEqual(check_final_grade(self.range, 75), 'Good')
+        self.assertEqual(check_final_grade(self.range, 95), 'Very good')
 
     def test_final_grade(self):
         self.assertEqual(self.exam_1.final_grade, "Marks range is not defined for this Exam Sheet.")

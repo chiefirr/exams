@@ -3,6 +3,7 @@ from django.db import models
 from django.db.models import Sum
 
 from core.models.abstract_models import TimeStampedModel
+from exams_api.helpers.models_helpers import check_final_grade
 from exams_api.models.task import Task
 from exams_api.models.task_sheet import TaskSheet
 
@@ -58,18 +59,4 @@ class Exam(TimeStampedModel):
         else:
             mark_range = self.exam_sheet.marks_range
             mark_rel = finished_tasks / all_exam_tasks
-            return self._check_final_grade(mark_range, mark_rel)
-
-    def _check_final_grade(self, mark_range, mark_rel):
-        if mark_rel <= mark_range.very_bad:
-            return 'Non-Certification'
-        elif mark_range.very_bad < mark_rel <= mark_range.bad:
-            return 'Very bad'
-        elif mark_range.bad < mark_rel <= mark_range.moderate:
-            return 'Bad'
-        elif mark_range.moderate < mark_rel <= mark_range.good:
-            return 'Moderate'
-        elif mark_range.good < mark_rel <= mark_range.very_good:
-            return 'Good'
-        else:
-            return 'Very good'
+            return check_final_grade(mark_range, mark_rel)

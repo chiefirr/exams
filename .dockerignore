@@ -1,0 +1,4 @@
+venv
+.tox
+.coverage
+.pytest_cache

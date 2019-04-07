@@ -8,9 +8,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-* Python > 3.6.5 <br />
+* Python >= 3.6.5 <br />
 * Django >= 2.2 <br />
-* PostgreSQL > 9.5 <br />
+* PostgreSQL >= 9.5 <br />
 
 
 ### Environment:
