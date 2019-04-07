@@ -16,9 +16,9 @@ class ExamSheet(TimeStampedModel):
                              )
 
     creator = models.ForeignKey(User,
-                             on_delete=models.DO_NOTHING,
-                             related_name='examsheets'
-                             )
+                                on_delete=models.DO_NOTHING,
+                                related_name='examsheets'
+                                )
 
     max_score = models.PositiveSmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)])
 
@@ -30,4 +30,3 @@ class ExamSheet(TimeStampedModel):
 
     def __str__(self):
         return f'ExamSheet: {self.title}'
-

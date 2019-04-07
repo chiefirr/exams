@@ -1,9 +1,9 @@
 from django.db import IntegrityError
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.exceptions import ValidationError
 from rest_framework.filters import OrderingFilter
 
 from core.views import MultiSerializerViewSet
+from exams_api.exceptions import ExamsAPIError
 from exams_api.models import Exam
 from exams_api.serializers import ExamBaseSerializer
 from exams_api.views.filters import ExamFilter
@@ -26,4 +26,4 @@ class ExamViewSet(MultiSerializerViewSet):
         try:
             serializer.save(user=self.request.user)
         except IntegrityError:
-            raise ValidationError({'error': "You have already passed this exam!"})
+            raise ExamsAPIError({'error': "You have already passed this exam!"})
