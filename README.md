@@ -28,7 +28,7 @@ You can create virtual environment _(you need virtualenv installed)_, install de
 ```
 make install
 ```
-######Fixtures:
+**Fixtures:**
 If you apply fixtures - you will have 3 users created:
 - **admin_exams** pass: **test12345** - is a superuser
 - **first_creator** pass: **test12345** email: fi@fi.fi
