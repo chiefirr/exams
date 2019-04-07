@@ -37,10 +37,6 @@ class ExamSheetViewSet(MultiSerializerViewSet):
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
-        # assign_perm('exams_api.add_examsheet', self.request.user, serializer.instance)
-        # assign_perm('exams_api.view_examsheet', self.request.user, serializer.instance)
-        assign_perm('exams_api.change_examsheet', self.request.user, serializer.instance)
-        assign_perm('exams_api.delete_examsheet', self.request.user, serializer.instance)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     def perform_create(self, serializer):
