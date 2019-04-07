@@ -2,7 +2,7 @@ version: '3'
 
 services:
   db:
-    restart: always
+    #    restart: always
     image: postgres
     environment:
       - POSTGRES_USER=exams
@@ -14,7 +14,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    #    command: python3 manage.py runserver 0.0.0.0:8990
+    command: python3 manage.py runserver 0.0.0.0:8990
     volumes:
       - .:/exams
     ports:
