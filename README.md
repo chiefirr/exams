@@ -89,7 +89,7 @@ bandit -r .
 ```
 
 ### HOWTO:
-**Description**
+**Description:**<br />
 API module for creating Exams service.
 Provides possibilities:
 - create Exam Sheets (collection of Task Sheets), edit and delete for its creator and view for another users
