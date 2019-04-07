@@ -10,6 +10,9 @@ from exams_api.views.filters import ExamFilter
 
 
 class ExamViewSet(MultiSerializerViewSet):
+    """
+    Viewset to pass a selected Exam for users
+    """
     http_method_names = ['get', 'post']
 
     queryset = Exam.objects.all()

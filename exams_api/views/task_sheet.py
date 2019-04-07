@@ -13,6 +13,9 @@ from exams_api.views.filters import TaskSheetsFilter
 
 
 class TaskSheetViewSet(MultiSerializerViewSet):
+    """
+    Viewset for Task Sheet, which is a question to be solved.
+    """
     queryset = TaskSheet.objects.select_related('creator').all()
 
     serializers = {'default': TaskSheetBaseSerializer,

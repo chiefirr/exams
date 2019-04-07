@@ -16,6 +16,10 @@ User = get_user_model()
 
 
 class ExamSheetViewSet(MultiSerializerViewSet):
+    """
+    Viewset to create exam sheet, which will be next available to add task sheets to it
+    and to users to pass it and get a final grade.
+    """
     queryset = ExamSheet.objects.select_related('creator').all()
 
     serializers = {'default': ExamSheetBaseSerializer,

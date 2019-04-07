@@ -10,6 +10,9 @@ from exams_api.views.filters import TaskFilter
 
 
 class TaskViewSet(MultiSerializerViewSet):
+    """
+    Viewset to solve a concrete task sheet, post answer and get a result score for that answer.
+    """
     http_method_names = ['get', 'post']
 
     queryset = Task.objects.all()
