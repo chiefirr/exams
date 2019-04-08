@@ -22,12 +22,6 @@ Before you run the project you need to create a **.env** file.
 * DB_PASSWORD - database password
 
 ### Installing
-##### With Makefile
-You can create virtual environment _(you need virtualenv installed)_, install dependencies, migrate,
- apply fixtures and runserver with 1 command:
-```
-make install
-```
 ##### Manually
 Change **DEBUG=True**.<br />
 To use minimal basic requirements version run:
