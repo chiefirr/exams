@@ -29,10 +29,9 @@ You can create virtual environment _(you need virtualenv installed)_, install de
 make install
 ```
 **Fixtures:** <br />
-If you apply fixtures - you will have 3 users created:
-- **admin_exams** pass: **test12345** - is a superuser
-- **first_creator** pass: **test12345**
-- **second_creator** pass: **test12345**
+If you apply fixtures - you will have 2 users created:
+- **first_user** pass: **test12345**
+- **second_user** pass: **test12345**
 ##### Manually
 To use minimal basic requirements version run:
 ```
@@ -115,7 +114,7 @@ on his answers.
 
 * [Django](https://docs.djangoproject.com/en/2.2/) - The web framework used
 * [Django Rest Framework](https://www.django-rest-framework.org/) - Framework for API building
-* [Django Guardian](https://django-guardian.readthedocs.io/en/stable/) - Permissions
+* [DRY Rest Permissions](https://github.com/dbkaplan/dry-rest-permissions) - Permissions
 * [Django REST Auth](https://django-rest-auth.readthedocs.io/en/latest/) - Authentication via DRF
 
 
