@@ -19,7 +19,7 @@ Before you run the project you need to create a **.env** file.
 * SECRET_KEY - Django app Secret Key
 * DB_NAME - database name
 * DB_USER - database user name
-* DB_PASSWORD - databas password
+* DB_PASSWORD - database password
 
 ### Installing
 ##### With Makefile
@@ -41,6 +41,11 @@ pip install -r requirements/base.txt
 To use full development version run:
 ```
 pip install -r requirements.txt
+```
+##### With Docker
+```
+docker-compose build
+docker-compose up
 ```
 
 ### Available API
