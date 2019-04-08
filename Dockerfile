@@ -19,7 +19,11 @@ WORKDIR /code
 
 # Copy project
 ADD . /code/
+RUN pip install --upgrade pip
 RUN pip install -r requirements/base.txt
+RUN mkdir /static
+RUN python manage.py migrate
+RUN python manage.py collectstatic --noinput
 
 # Server
 #EXPOSE 8000

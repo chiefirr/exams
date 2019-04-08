@@ -2,14 +2,14 @@ version: '3'
 
 services:
   db:
-    #    restart: always
     image: postgres
     environment:
-      - POSTGRES_USER=exams
-      - POSTGRES_PASSWORD=examo
-      - POSTGRES_DB=123qwe!!!
+      - POSTGRES_DB=exams
+      - POSTGRES_USER=examo
+      - POSTGRES_PASSWORD=1q1q1q1q
+  #    expose:
+  #      - "5432"
   web:
-    restart: always
     #    env_file: .env
     build:
       context: .
@@ -18,6 +18,6 @@ services:
     volumes:
       - .:/exams
     ports:
-      - "8099:8099"
+      - "8990:8990"
     depends_on:
       - db
