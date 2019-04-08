@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from dry_rest_permissions.generics import authenticated_users
 from rest_framework.compat import MinValueValidator
 
 from core.models.abstract_models import TimeStampedModel
@@ -36,3 +37,21 @@ class Task(TimeStampedModel):
         else:
             self.score = 0
         super().save(*args, **kwargs)
+
+    @staticmethod
+    def has_read_permission(request):
+        return True
+
+    def has_object_read_permission(self, request):
+        return True
+
+    @staticmethod
+    @authenticated_users
+    def has_write_permission(request):
+        return True
+
+    def has_object_write_permission(self, request):
+        return False
+
+    def has_object_update_permission(self, request):
+        return False

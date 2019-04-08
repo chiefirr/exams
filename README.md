@@ -107,8 +107,7 @@ on his answers.
 3. Create several new **Task Sheet**s for this Exam Sheet.
 4. If you want to solve an exam - create an **Exam** and select available Exam Sheets.
 5. To solve the Exam - you should create a **Task** for each TaskSheet assigned to selected Exam, write your answer and save.
- Repeat with all available TaskSheets and you will get a final grade at the end.
-
+ Repeat with all available TaskSheets and you will get a final grade at the end.<br /><br />
 
 ## Built With
 

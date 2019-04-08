@@ -1,5 +1,6 @@
 from django.db import IntegrityError
 from django_filters.rest_framework import DjangoFilterBackend
+from dry_rest_permissions.generics import DRYPermissions
 from rest_framework.filters import OrderingFilter
 
 from core.views import MultiSerializerViewSet
@@ -13,6 +14,7 @@ class ExamViewSet(MultiSerializerViewSet):
     """
     Viewset to pass a selected Exam for users
     """
+    permission_classes = (DRYPermissions,)
     http_method_names = ['get', 'post']
 
     queryset = Exam.objects.all()

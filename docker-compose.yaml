@@ -5,13 +5,12 @@ services:
     environment:
       - POSTGRES_DB=exams
       - POSTGRES_USER=examo
-      - POSTGRES_PASSWORD=qwe123!!!
+      - POSTGRES_PASSWORD=test12345
     container_name: db
   web:
     build:
       context: .
       dockerfile: Dockerfile
-    command: python3 manage.py runserver 0.0.0.0:8990
     volumes:
       - .:/exams
     ports:

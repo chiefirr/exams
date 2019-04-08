@@ -40,3 +40,4 @@ pytest-django==3.4.8
     - six [required: >=1.10.0, installed: 1.12.0]
 python-dotenv==0.10.1
 wheel==0.33.1
+whitenoise==4.1.2

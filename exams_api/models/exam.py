@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.db.models import Sum
+from dry_rest_permissions.generics import authenticated_users
 
 from core.models.abstract_models import TimeStampedModel
 from exams_api.helpers.models_helpers import check_final_grade
@@ -74,3 +75,21 @@ class Exam(TimeStampedModel):
             .filter(user=self.user, task_sheet__exam_sheet=self.exam_sheet).count()
         all_exam_tasks = TaskSheet.objects.filter(exam_sheet=self.exam_sheet).count()
         return all_exam_tasks, finished_tasks
+
+    @staticmethod
+    def has_read_permission(request):
+        return True
+
+    def has_object_read_permission(self, request):
+        return True
+
+    @staticmethod
+    @authenticated_users
+    def has_write_permission(request):
+        return True
+
+    def has_object_write_permission(self, request):
+        return False
+
+    def has_object_update_permission(self, request):
+        return False

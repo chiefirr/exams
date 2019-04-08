@@ -4,7 +4,7 @@ ENV PYTHONUNBUFFERED 1
 RUN mkdir /code && mkdir /code/static
 WORKDIR /code
 COPY . /code/
-COPY cmd.sh /
+ADD cmd.sh /
 RUN chmod +x /cmd.sh
 RUN pip install --upgrade pip
 RUN pip install -r requirements/base.txt
