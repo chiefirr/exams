@@ -5,4 +5,4 @@ class ExtendedUser(AbstractUser):
     pass
 
     def __str__(self):
-        return f'{self.username} {(self.pk)}'
+        return f'{self.username}'

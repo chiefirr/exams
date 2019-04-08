@@ -12,3 +12,4 @@ omit =
     *manage.py*
     *wsgi.py*
     *urls.py*
+    *additional_tasks/*

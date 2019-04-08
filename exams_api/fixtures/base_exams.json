@@ -1,0 +1,152 @@
+[
+  {
+    "model": "exams_api.tasksheet",
+    "pk": 1,
+    "fields": {
+      "created": "2019-04-08T15:08:55.010Z",
+      "edited": "2019-04-08T15:08:55.010Z",
+      "question": "1+1= ?",
+      "exam_sheet": 1,
+      "creator": 1,
+      "score": 1,
+      "answer": "2"
+    }
+  },
+  {
+    "model": "exams_api.tasksheet",
+    "pk": 2,
+    "fields": {
+      "created": "2019-04-08T15:09:04.919Z",
+      "edited": "2019-04-08T15:09:04.919Z",
+      "question": "2+2= ?",
+      "exam_sheet": 1,
+      "creator": 1,
+      "score": 5,
+      "answer": "4"
+    }
+  },
+  {
+    "model": "exams_api.tasksheet",
+    "pk": 3,
+    "fields": {
+      "created": "2019-04-08T15:09:23.333Z",
+      "edited": "2019-04-08T15:09:23.333Z",
+      "question": "3+5= ?",
+      "exam_sheet": 1,
+      "creator": 1,
+      "score": 7,
+      "answer": "8"
+    }
+  },
+  {
+    "model": "exams_api.tasksheet",
+    "pk": 4,
+    "fields": {
+      "created": "2019-04-08T15:09:44.576Z",
+      "edited": "2019-04-08T15:09:44.576Z",
+      "question": "3+5+1= ?",
+      "exam_sheet": 1,
+      "creator": 1,
+      "score": 7,
+      "answer": "9"
+    }
+  },
+  {
+    "model": "exams_api.tasksheet",
+    "pk": 5,
+    "fields": {
+      "created": "2019-04-08T15:11:55.606Z",
+      "edited": "2019-04-08T15:11:55.606Z",
+      "question": "2*5= ?",
+      "exam_sheet": 2,
+      "creator": 2,
+      "score": 10,
+      "answer": "10"
+    }
+  },
+  {
+    "model": "exams_api.tasksheet",
+    "pk": 6,
+    "fields": {
+      "created": "2019-04-08T15:12:11.679Z",
+      "edited": "2019-04-08T15:12:11.679Z",
+      "question": "5*5= ?",
+      "exam_sheet": 2,
+      "creator": 2,
+      "score": 20,
+      "answer": "25"
+    }
+  },
+  {
+    "model": "exams_api.tasksheet",
+    "pk": 7,
+    "fields": {
+      "created": "2019-04-08T15:12:27.551Z",
+      "edited": "2019-04-08T15:12:27.551Z",
+      "question": "10*5+2= ?",
+      "exam_sheet": 2,
+      "creator": 2,
+      "score": 40,
+      "answer": "52"
+    }
+  },
+  {
+    "model": "exams_api.tasksheet",
+    "pk": 8,
+    "fields": {
+      "created": "2019-04-08T15:13:02.552Z",
+      "edited": "2019-04-08T15:13:02.552Z",
+      "question": "20*5+20*5= ?",
+      "exam_sheet": 2,
+      "creator": 2,
+      "score": 30,
+      "answer": "200"
+    }
+  },
+  {
+    "model": "exams_api.examsheet",
+    "pk": 1,
+    "fields": {
+      "created": "2019-04-08T15:08:30.122Z",
+      "edited": "2019-04-08T15:08:30.122Z",
+      "title": "Math exam",
+      "creator": 1,
+      "max_score": 20,
+      "marks_range": 1
+    }
+  },
+  {
+    "model": "exams_api.examsheet",
+    "pk": 2,
+    "fields": {
+      "created": "2019-04-08T15:11:32.570Z",
+      "edited": "2019-04-08T15:11:32.571Z",
+      "title": "Complicated math exam",
+      "creator": 2,
+      "max_score": 100,
+      "marks_range": 2
+    }
+  },
+  {
+    "model": "exams_api.marksrange",
+    "pk": 1,
+    "fields": {
+      "very_bad": 3,
+      "bad": 8,
+      "moderate": 12,
+      "good": 15,
+      "very_good": 17
+    }
+  },
+  {
+    "model": "exams_api.marksrange",
+    "pk": 2,
+    "fields": {
+      "very_bad": 10,
+      "bad": 20,
+      "moderate": 50,
+      "good": 70,
+      "very_good": 85
+    }
+  }
+]

@@ -9,7 +9,7 @@ User = get_user_model()
 
 class Task(TimeStampedModel):
     class Meta:
-        unique_together = ('user', 'task_sheet', )
+        unique_together = ('user', 'task_sheet',)
 
     user = models.ForeignKey(User,
                              on_delete=models.CASCADE,
@@ -29,7 +29,6 @@ class Task(TimeStampedModel):
 
     def __str__(self):
         return f'Task {self.pk} finished by user {self.user}'
-
 
     def save(self, *args, **kwargs):
         if self.answer == self.task_sheet.answer:

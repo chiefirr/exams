@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=exams
+      - POSTGRES_USER=examo
+      - POSTGRES_PASSWORD=1q1q1q1q
+  #    expose:
+  #      - "5432"
+  web:
+    #    env_file: .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python3 manage.py runserver 0.0.0.0:8990
+    volumes:
+      - .:/exams
+    ports:
+      - "8990:8990"
+    depends_on:
+      - db

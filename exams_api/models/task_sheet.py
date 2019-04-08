@@ -1,8 +1,7 @@
 from django.contrib.auth import get_user_model
-from django.contrib.contenttypes.fields import GenericForeignKey
-from django.contrib.contenttypes.models import ContentType
 from django.core.validators import MinValueValidator
 from django.db import models
+from dry_rest_permissions.generics import allow_staff_or_superuser, authenticated_users
 
 from core.models.abstract_models import TimeStampedModel
 
@@ -23,13 +22,13 @@ class TaskSheet(TimeStampedModel):
                                    )
 
     creator = models.ForeignKey(User,
-                             on_delete=models.CASCADE,
-                             related_name='task_sheets'
-                             )
+                                on_delete=models.CASCADE,
+                                related_name='task_sheets'
+                                )
 
     score = models.PositiveSmallIntegerField(validators=[MinValueValidator(0)],
                                              default=0,
-                                             )  # TODO - validate 0<score
+                                             )
 
     answer = models.TextField()
 
@@ -42,4 +41,27 @@ class TaskSheet(TimeStampedModel):
     # content_object = GenericForeignKey()
 
     def __str__(self):
-        return f"Task {self.pk}: to Exam Sheet '{self.exam_sheet}'"
+        return f"Task {self.pk}: to Exam Sheet '{self.exam_sheet}' - Question: '{self.question}'"
+
+    @staticmethod
+    @allow_staff_or_superuser
+    @authenticated_users
+    def has_read_permission(request):
+        return True
+
+    @allow_staff_or_superuser
+    @authenticated_users
+    def has_object_read_permission(self, request):
+        return True
+
+    @staticmethod
+    @allow_staff_or_superuser
+    @authenticated_users
+    def has_write_permission(request):
+        return True
+
+    def has_object_write_permission(self, request):
+        return request.user == self.creator
+
+    def has_object_update_permission(self, request):
+        return request.user == self.creator

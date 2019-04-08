@@ -4,7 +4,7 @@ from rest_framework.status import HTTP_400_BAD_REQUEST
 
 class ExamsAPIError(APIException):
     """
-    Movies error class
+    Exams error class
     returns status code: 400
     """
     def __init__(self, msg):
