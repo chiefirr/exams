@@ -108,7 +108,6 @@ ACCOUNT_LOGOUT_ON_GET = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# STATIC_ROOT = '/code/static'
 
 LOGIN_REDIRECT_URL = '/api/'
 
