@@ -3,5 +3,5 @@ python manage.py dumpdata core > exams_api/fixtures/base_auth.json --indent 4
 to use fixtures run:
 python manage.py loaddata exams_api/fixtures/base_auth.json
 - admin_exams pass = test12345 - superuser
-- first_creator pass = test12345 email = fi@fi.fi
-- second_creator pass = test12345 email = se@se.se
+- first_creator pass = test12345
+- second_creator pass = test12345

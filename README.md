@@ -31,8 +31,8 @@ make install
 **Fixtures:** <br />
 If you apply fixtures - you will have 3 users created:
 - **admin_exams** pass: **test12345** - is a superuser
-- **first_creator** pass: **test12345** email: fi@fi.fi
-- **second_creator** pass: **test12345** email: se@se.se
+- **first_creator** pass: **test12345**
+- **second_creator** pass: **test12345**
 ##### Manually
 To use minimal basic requirements version run:
 ```

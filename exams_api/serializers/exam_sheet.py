@@ -21,6 +21,7 @@ class ExamSheetBaseSerializer(serializers.ModelSerializer):
     def validate_marks_range(self, marks_range):
         if marks_range and marks_range.very_good > int(self.initial_data['max_score']):
             self.fail("cant_assign_range")
+        return marks_range
 
     def get_task_sheets(self, obj):
         from . import TaskSheetBaseSerializer

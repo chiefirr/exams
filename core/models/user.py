@@ -1,5 +1,4 @@
 from django.contrib.auth.models import AbstractUser
-from guardian.shortcuts import assign_perm
 
 
 class ExtendedUser(AbstractUser):
