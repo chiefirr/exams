@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=exams
+      - POSTGRES_USER=examo
+      - POSTGRES_PASSWORD=test12345
+    container_name: db
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/exams
+    ports:
+      - "8990:8990"
+    depends_on:
+      - db

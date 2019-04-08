@@ -1,0 +1,8 @@
+python manage.py dumpdata core > exams_api/fixtures/base_auth.json --indent 4
+python manage.py dumpdata exams_api > exams_api/fixtures/base_exams.json --indent 4
+
+to use fixtures run:
+python manage.py loaddata exams_api/fixtures/base_auth.json
+python manage.py loaddata exams_api/fixtures/base_exams.json
+- first_user pass = test12345
+- second_user pass = test12345
