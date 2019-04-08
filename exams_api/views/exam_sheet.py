@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import IntegrityError
 from django_filters.rest_framework import DjangoFilterBackend
+from dry_rest_permissions.generics import DRYPermissions
 from guardian.shortcuts import assign_perm
 from rest_framework import status
 from rest_framework.filters import OrderingFilter
@@ -20,6 +21,7 @@ class ExamSheetViewSet(MultiSerializerViewSet):
     Viewset to create exam sheet, which will be next available to add task sheets to it
     and to users to pass it and get a final grade.
     """
+    permission_classes = (DRYPermissions,)
     queryset = ExamSheet.objects.select_related('creator').all()
 
     serializers = {'default': ExamSheetBaseSerializer,
@@ -35,10 +37,6 @@ class ExamSheetViewSet(MultiSerializerViewSet):
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
-        # assign_perm('exams_api.add_examsheet', self.request.user, serializer.instance)
-        # assign_perm('exams_api.view_examsheet', self.request.user, serializer.instance)
-        assign_perm('exams_api.change_examsheet', self.request.user, serializer.instance)
-        assign_perm('exams_api.delete_examsheet', self.request.user, serializer.instance)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     def perform_create(self, serializer):

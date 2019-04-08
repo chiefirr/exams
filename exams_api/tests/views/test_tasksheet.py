@@ -1,5 +1,4 @@
 from django.contrib.auth import get_user_model
-from django.test import Client
 from rest_framework import status
 from rest_framework.test import APITestCase
 
@@ -8,7 +7,7 @@ from exams_api.models import ExamSheet, TaskSheet
 User = get_user_model()
 
 
-class TestExamSheetViewSet(APITestCase):
+class TestTaskSheetViewSet(APITestCase):
     def setUp(self):
         self.user = User.objects.create_user(
             username='test0',
@@ -74,8 +73,6 @@ class TestExamSheetViewSet(APITestCase):
             answer='6'
         )
 
-        # self.task_sheet_1 = TaskSheet.objects.create(**self.task_sheet_attrs_1)
-
         self.task_sheet_attrs_2 = dict(
             question='2+2= ?',
             exam_sheet=self.examsheet_1,
@@ -127,26 +124,30 @@ class TestExamSheetViewSet(APITestCase):
         self.client.login(username='test0', password='qwe111!!!')
         response = self.client.post(f'/api/tasks_sheets/', self.task_sheet_attrs_exam_pk)
         es_pk_1 = response.data['id']
-        task_sheet_1 = TaskSheet.objects.get(pk=es_pk_1)
-        self.assertTrue(self.user.has_perm('exams_api.change_tasksheet', task_sheet_1))
-        self.assertTrue(self.user.has_perm('exams_api.delete_tasksheet', task_sheet_1))
 
-        # attrs_edited = {'question': 'Changed question'}
-        # response_put = self.client.put(f'/api/tasks_sheets/{es_pk_1}/', attrs_edited)
-        # self.assertEqual(response_put.status_code, status.HTTP_200_OK)
+        attrs_edited = dict(
+            question='Changed question 1',
+            exam_sheet=self.examsheet_1.pk,
+            creator=self.user,
+            score=15,
+            answer='15'
+        )
+        response_put = self.client.put(f'/api/tasks_sheets/{es_pk_1}/', attrs_edited)
+        self.assertEqual(response_put.status_code, status.HTTP_200_OK)
         self.client.logout()
 
         self.client.login(username='test2', password='qwe111!!!')
         response_2 = self.client.post(f'/api/tasks_sheets/', self.task_sheet_attrs_exam_pk_user_2)
         es_pk_2 = response_2.data['id']
-        task_sheet_2 = TaskSheet.objects.get(pk=es_pk_2)
-        self.assertFalse(self.user_2.has_perm('exams_api.change_tasksheet', task_sheet_1))
-        self.assertFalse(self.user_2.has_perm('exams_api.delete_tasksheet', task_sheet_1))
-        self.assertTrue(self.user_2.has_perm('exams_api.change_tasksheet', task_sheet_2))
-        self.assertTrue(self.user_2.has_perm('exams_api.delete_tasksheet', task_sheet_2))
 
-        # attrs_edited_2 = {'question': 'Changed question 2'}
-        # response_put_403 = self.client.put(f'/api/tasks_sheets/{es_pk_1}/', attrs_edited_2)
-        # response_put_200 = self.client.put(f'/api/tasks_sheets/{es_pk_2}/', attrs_edited_2)
-        # self.assertEqual(response_put_403.status_code, status.HTTP_403_FORBIDDEN)
-        # self.assertEqual(response_put_200.status_code, status.HTTP_200_OK)
+        attrs_edited_2 = dict(
+            question='Changed question 2',
+            exam_sheet=self.examsheet_2.pk,
+            creator=self.user_2,
+            score=25,
+            answer='25'
+        )
+        response_put_403 = self.client.put(f'/api/tasks_sheets/{es_pk_1}/', attrs_edited_2)
+        response_put_200 = self.client.put(f'/api/tasks_sheets/{es_pk_2}/', attrs_edited_2)
+        self.assertEqual(response_put_403.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response_put_200.status_code, status.HTTP_200_OK)

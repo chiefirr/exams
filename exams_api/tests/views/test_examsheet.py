@@ -75,11 +75,8 @@ class TestExamSheetViewSet(APITestCase):
         self.client.login(username='test0', password='qwe111!!!')
         response = self.client.post(f'/api/exams_sheets/', self.exam_attrs)
         es_pk_1 = response.data['id']
-        exam_sheet_1 = ExamSheet.objects.get(pk=es_pk_1)
-        self.assertTrue(self.user.has_perm('exams_api.change_examsheet', exam_sheet_1))
-        self.assertTrue(self.user.has_perm('exams_api.delete_examsheet', exam_sheet_1))
 
-        attrs_edited = {'title': 'Changed test exam title'}
+        attrs_edited = {'title': 'Changed test exam title', 'creator': self.user, 'max_score': 70}
         response_put = self.client.put(f'/api/exams_sheets/{es_pk_1}/', attrs_edited)
         self.assertEqual(response_put.status_code, status.HTTP_200_OK)
         self.client.logout()
@@ -87,14 +84,9 @@ class TestExamSheetViewSet(APITestCase):
         self.client.login(username='test2', password='qwe111!!!')
         response = self.client.post(f'/api/exams_sheets/', self.exam_attrs_2)
         es_pk_2 = response.data['id']
-        exam_sheet_2 = ExamSheet.objects.get(pk=es_pk_2)
-        self.assertFalse(self.user_2.has_perm('exams_api.change_examsheet', exam_sheet_1))
-        self.assertFalse(self.user_2.has_perm('exams_api.delete_examsheet', exam_sheet_1))
-        self.assertTrue(self.user_2.has_perm('exams_api.change_examsheet', exam_sheet_2))
-        self.assertTrue(self.user_2.has_perm('exams_api.delete_examsheet', exam_sheet_2))
 
-        # attrs_edited_2 = {'title': 'Changed test exam title 2'}
-        # response_put_403 = self.client.put(f'/api/exams_sheets/{es_pk_1}/', attrs_edited_2)
-        # response_put_200 = self.client.put(f'/api/exams_sheets/{es_pk_2}/', attrs_edited_2)
-        # self.assertEqual(response_put_403.status_code, status.HTTP_403_FORBIDDEN)
-        # self.assertEqual(response_put_200.status_code, status.HTTP_200_OK)
+        attrs_edited_2 = {'title': 'Changed test exam title 2', 'creator': self.user, 'max_score': 80}
+        response_put_403 = self.client.put(f'/api/exams_sheets/{es_pk_1}/', attrs_edited_2)
+        response_put_200 = self.client.put(f'/api/exams_sheets/{es_pk_2}/', attrs_edited_2)
+        self.assertEqual(response_put_403.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response_put_200.status_code, status.HTTP_200_OK)

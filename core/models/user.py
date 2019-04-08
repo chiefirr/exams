@@ -7,11 +7,3 @@ class ExtendedUser(AbstractUser):
 
     def __str__(self):
         return f'{self.username}'
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        assign_perm('exams_api.add_examsheet', self)
-        assign_perm('exams_api.add_exam', self)
-        assign_perm('exams_api.add_tasksheet', self)
-        assign_perm('exams_api.add_task', self)
-        assign_perm('exams_api.add_marksrange', self)
