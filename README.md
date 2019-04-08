@@ -71,10 +71,6 @@ You can run tests using [pytest](https://docs.pytest.org/en/latest/):
 ```
 pytest
 ```
-or
-```
-make test
-```
 ### And coding style tests
 
 Test style adjustments accordingly to PEP8:
