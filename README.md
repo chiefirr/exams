@@ -71,6 +71,10 @@ You can run tests using [pytest](https://docs.pytest.org/en/latest/):
 ```
 pytest
 ```
+or use *tox*
+```
+tox
+```
 ### And coding style tests
 
 Test style adjustments accordingly to PEP8:
