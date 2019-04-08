@@ -28,21 +28,26 @@ You can create virtual environment _(you need virtualenv installed)_, install de
 ```
 make install
 ```
-**Fixtures:** <br />
-If you apply fixtures - you will have 2 users created:
-- **first_user** pass: **test12345**
-- **second_user** pass: **test12345**
 ##### Manually
+Change **DEBUG=True**.<br />
 To use minimal basic requirements version run:
 ```
 pip install -r requirements/base.txt
+
+python manage.py loaddata exams_api/fixtures/base_auth.json
+python manage.py loaddata exams_api/fixtures/base_exams.json
 ```
 
 To use full development version run:
 ```
 pip install -r requirements.txt
 ```
+**Fixtures:** <br />
+If you apply fixtures - you will have 2 users created:
+- **first_user** pass: **test12345**
+- **second_user** pass: **test12345**
 ##### With Docker
+Change **DEBUG=False**.<br />
 ```
 docker-compose build
 docker-compose up
