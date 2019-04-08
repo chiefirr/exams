@@ -32,14 +32,6 @@ class TaskSheet(TimeStampedModel):
 
     answer = models.TextField()
 
-    # answer_type = models.ForeignKey(ContentType,
-    #                                 on_delete=models.CASCADE,
-    #                                 )
-    #
-    # object_id = models.PositiveIntegerField()
-    #
-    # content_object = GenericForeignKey()
-
     def __str__(self):
         return f"Task {self.pk}: to Exam Sheet '{self.exam_sheet}' - Question: '{self.question}'"
 

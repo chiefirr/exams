@@ -132,6 +132,7 @@ REST_FRAMEWORK = {
     'DATETIME_FORMAT': "%H:%M:%S %d-%m-%Y",
 }
 
+# Production settings
 if DEBUG == False:
     DATABASES["default"] = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
