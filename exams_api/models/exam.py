@@ -58,8 +58,11 @@ class Exam(TimeStampedModel):
             return MESSAGES["not_completed_tasks"]
         else:
             mark_range = self.exam_sheet.marks_range
-            mark_rel = finished_tasks / all_exam_tasks
-            return check_final_grade(mark_range, mark_rel)
+            all_tasks_results = Task.objects.select_related('task_sheet') \
+                .filter(user=self.user, task_sheet__exam_sheet=self.exam_sheet) \
+                .aggregate(Sum('score'))
+
+            return check_final_grade(mark_range, all_tasks_results["score__sum"])
 
     def _finished_and_all_tasks(self):
         """
