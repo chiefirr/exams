@@ -22,6 +22,12 @@ Before you run the project you need to create a **.env** file.
 * DB_PASSWORD - database password
 
 ### Installing
+##### Makefile
+You must have a *virtual environment* created and activated to use this method.
+```
+make install
+```
+
 ##### Manually
 Change **DEBUG=True**.<br />
 To use minimal basic requirements version run:
@@ -70,6 +76,10 @@ rest-auth/logout/
 You can run tests using [pytest](https://docs.pytest.org/en/latest/): 
 ```
 pytest
+```
+or
+```
+make test
 ```
 or use *tox*
 ```
