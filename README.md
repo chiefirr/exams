@@ -1,4 +1,4 @@
-# Movies
+# Exams
 
 Small Exams service to create and share exams sheets, solve tasks and receive final grades.
 
