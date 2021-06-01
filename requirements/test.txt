@@ -41,6 +41,6 @@ sqlparse==0.3.0
 stevedore==1.30.1
 toml==0.10.0
 tox==3.8.6
-urllib3==1.24.1
+urllib3==1.26.5
 virtualenv==16.4.3
 whitenoise==4.1.2
